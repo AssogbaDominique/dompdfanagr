@@ -1,0 +1,30 @@
+<?php
+// Include autoloader
+require_once 'dompdf/autoload.inc.php';
+
+// Reference the Dompdf namespace
+use Dompdf\Dompdf;
+
+// Instantiate and use the dompdf class
+$dompdf = new Dompdf();
+
+// Load HTML content
+$htmlContent = '
+<h1>Analyse Graphique</h1>
+<h3>Analyse des ventes</h3>
+<p>Le graphique ci-dessous montre l\'analyse des ventes pour différents produits.</p>
+<img src="bar_chart.jpg" alt="Graphique des ventes" width="500">';
+
+// Chargement du contenu HTML
+$dompdf->loadHTML($htmlContent);
+
+// (Optional) Setup the paper size and orientation // Configurer la taille et l'orientation de la page
+$dompdf -> setPaper ( 'A4' ,  'landscape' );
+
+// Render the HTML as PDF // Rendre le HTML en PDF
+ $dompdf->render();
+
+// Output the generated PDF // Sortir  le PDF et forcer le telechargement
+ $dompdf->stream("document", array("Attachment" => 0));
+ 
+?>
