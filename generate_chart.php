@@ -41,11 +41,11 @@ foreach ($data as $index => $value) {
 }
 
 // Enregistrer l'image sous forme de fichier JPEG
-imagejpeg($image, 'bar_chart.jpg');
+imagejpeg($image, './images/bar_chart.jpg');
 
 // Libérer la mémoire
 imagedestroy($image);
 
 // Afficher un message de confirmation
-echo "Le graphique a été généré et enregistré sous le nom 'bar_chart.jpg'.";
+//echo "Le graphique a été généré et enregistré sous le nom 'bar_chart.jpg'.";
 ?>

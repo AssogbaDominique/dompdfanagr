@@ -1,19 +1,12 @@
 <?php
-// Include autoloader
-require_once 'dompdf/autoload.inc.php';
+require 'vendor/autoload.php';
 
-// Reference the Dompdf namespace
 use Dompdf\Dompdf;
 
 // Créer une instance de Dompdf
 $dompdf = new Dompdf();
 
-// Chemin de l'image
-$imagePath = 'images/bar_chart.jpg';
-$imageData = base64_encode(file_get_contents($imagePath));
-$src = 'data:image/jpg;base64,' . $imageData;
-
-// Contenu HTML
+// Charger le contenu HTML
 $html = '
 <html>
 <head>
@@ -26,12 +19,12 @@ $html = '
 <body>
     <div class="content">
         <h1>Mon document PDF</h1>
-        <img src="' . $src . '" alt="Image">
+        <p>Ceci est un exemple de document PDF généré avec Dompdf.</p>
+        <img src="./images/bar_chart.jpg" alt="Graphique des ventes" width="500">;
     </div>
 </body>
 </html>';
 
-// Charger le contenu HTML
 $dompdf->loadHtml($html);
 
 // (Optionnel) Configurer la taille et l'orientation de la page
