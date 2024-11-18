@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphique des Ventes Mensuelles</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Ajoutez Chart.js via CDN -->
+</head>
+<body>
+    <div style="width: 400px; margin: auto;">
+        <canvas id="myChart"></canvas> <!-- Zone d'affichage du graphique -->
+    </div>
+    
+    <script>
+        // Sélection de l'élément canvas
+        const ctx = document.getElementById('myChart').getContext('2d');
+        
+        // Création du graphique avec Chart.js
+        const myChart = new Chart(ctx, {
+            type: 'bar', // Type de graphique
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'], // Labels des mois
+                datasets: [{
+                    label: 'Ventes Mensuelles',
+                    data: [100, 200, 150, 250, 180], // Données des ventes
+                    backgroundColor: 'rgba(0, 102, 204, 0.5)', // Couleur des barres
+                    borderColor: 'rgba(0, 102, 204, 1)', // Couleur des bordures des barres
+                    borderWidth: 1 // Épaisseur des bordures
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true, // Commencer l'axe Y à zéro
+                        title: {
+                            display: true,
+                            text: 'Ventes' // Titre de l'axe Y
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Mois' // Titre de l'axe X
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top' // Position de la légende
+                    },
+                    tooltip: {
+                        enabled: true // Activer les infobulles pour les barres
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
